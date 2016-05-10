@@ -2,10 +2,12 @@ describe('Airport', function() {
 
   var airport;
   var plane;
+  var weather;
 
   beforeEach(function(){
-    airport = new Airport();
     plane = new Plane();
+    weather = new Weather();
+    airport = new Airport(weather);
   });
 
   describe('landPlane', function(){
@@ -13,7 +15,11 @@ describe('Airport', function() {
       spyOn(plane, 'landedStatus').and.returnValue(true);
       airport.land(plane);
       expect(airport.planes).toContain(plane);
+    });
 
+    it('a plane cannot land if stormy', function() {
+      spyOn(weather, 'isStormy').and.returnValue(true);
+      expect(function(){airport.land(plane);}).toThrowError("Too stormy to land");
     });
   });
 
@@ -32,4 +38,5 @@ describe('Airport', function() {
       expect(function(){airport.land(plane);}).toThrowError("Capacity full");
     });
   });
+
 });

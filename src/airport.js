@@ -1,12 +1,16 @@
-function Airport() {
+function Airport(weather) {
 
   CAPACITY = 1;
 
   this.planes = [];
+  this.weather = weather;
 
   Airport.prototype.land = function(plane) {
     if(this.isFull()) {
       throw new Error("Capacity full");
+    }
+    if(this.weather.isStormy() === true) {
+      throw new Error("Too stormy to land");
     }
     this.planes.push(plane);
     plane.landed(true);
@@ -22,10 +26,3 @@ function Airport() {
     return this.planes.length >= CAPACITY;
   };
 }
-
-
-airport = new Airport();
-console.log(airport.isFull());
-plane = new Plane();
-airport.land(plane);
-console.log(airport.isFull());

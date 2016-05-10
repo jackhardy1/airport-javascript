@@ -1,21 +1,16 @@
 function Weather(){
 
-  this.stormStatus = false;
-
-  Weather.prototype.weatherGenerator = function(){
+  Weather.prototype.isStormy = function(){
     var value = Math.floor(Math.random()*6);
-    console.log(value);
     if(value === 0) {
-      this.stormStatus = true;
+      return true;
     } else if(value > 0) {
-      this.stormStatus = false;
+      return false;
     }
   };
 
 }
 
-weather = new Weather();
+var weather = new Weather();
 
-weather.weatherGenerator();
-console.log(weather.stormStatus);
-// comment
+console.log(weather.isStormy());
