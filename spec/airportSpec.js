@@ -3,12 +3,12 @@ describe('Airport', function() {
   var airport;
   var plane;
 
-  beforeEach(function() {
+  beforeEach(function(){
     airport = new Airport();
     plane = new Plane();
   });
 
-  describe('landPlane', function() {
+  describe('landPlane', function(){
     it('a plane can land and be stored in the airport', function(){
       spyOn(plane, 'landedStatus').and.returnValue(true);
       airport.land(plane);
@@ -17,7 +17,7 @@ describe('Airport', function() {
     });
   });
 
-  describe('takeoff', function() {
+  describe('takeoff', function(){
     it('a plane can take off', function(){
       spyOn(plane, 'landedStatus').and.returnValue(true);
       airport.land(plane);
@@ -26,4 +26,10 @@ describe('Airport', function() {
     });
   });
 
+  describe('capacity', function(){
+    it("plane cannot land if capacity is full", function(){
+      airport.land(plane);
+      expect(function(){airport.land(plane);}).toThrowError("Capacity full");
+    });
+  });
 });
