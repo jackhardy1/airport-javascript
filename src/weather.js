@@ -10,7 +10,3 @@ function Weather(){
   };
 
 }
-
-var weather = new Weather();
-
-console.log(weather.isStormy());
