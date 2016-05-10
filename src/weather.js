@@ -18,3 +18,4 @@ weather = new Weather();
 
 weather.weatherGenerator();
 console.log(weather.stormStatus);
+// comment
