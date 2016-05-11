@@ -1,11 +1,11 @@
-'use strict';
-describe('Aiport', function(){
+// 'use strict';
+describe('Airport', function(){
 
   var airport;
   var plane;
 
   beforeEach(function(){
-    airport = new Aiport();
+    airport = new Airport();
     plane = jasmine.createSpy('plane');
   });
     it('has no planes by default', function(){

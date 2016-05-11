@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 describe('Plane', function(){
 
   var plane;
